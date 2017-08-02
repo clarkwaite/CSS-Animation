@@ -210,6 +210,17 @@ svg {
 #smoke .s8 { animation: smokeR .5s 0.8s infinite }
 #smoke .s9 { animation: smokeL .3s 1s infinite }
 
+.controls {
+  opacity: .05;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+}
+.controls:hover {
+  opacity: 1;
+}
+
 @media (max-width: 1280px) {
   .plane {
   height: 90px;
