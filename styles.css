@@ -228,4 +228,7 @@ svg {
   #smoke{ 
   bottom: 0px;
   }
+  .frame {
+    bottom: 25vw;
+  }
 }
