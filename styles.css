@@ -1,0 +1,223 @@
+* {
+  position: relative;
+}
+html, body {
+  background-color: rgb(90,180,255);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.plane-container {
+  width: 200px;
+  margin: 0px auto;
+  z-index: 3;
+}
+.plane {
+  width: 100%;
+  height: 150px;
+  -ms-transform: rotate(315deg); /* IE 9 */
+  -webkit-transform: rotate(315deg); /* Chrome, Safari, Opera */
+  transform: rotate(315deg);
+}
+.frame {
+  height: auto;
+  position: absolute;
+  width: 100%;
+  bottom: 10vw;
+  z-index: 1;
+/* Move the plane on click */
+  -ms-transition: 3s; /* IE 9 */
+  -webkit-transition: 3s; /* Chrome, Safari, Opera */
+  transition: 3s;
+  
+}
+.frame:active {
+  bottom: 65%;
+  transform: rotateY(360deg);
+}
+
+/*Clouds*/
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+.cloud {
+  position: absolute;
+  width: 300px;
+  opacity: 1;
+  right: 5%;
+  z-index: 0;
+}
+.cloud.close {
+  z-index: 2;
+}
+.cloud.far {
+  z-index: -1;
+}
+.cloud.small {
+  margin-right: 80%;
+  width: 100px;
+  margin-top: 150px;
+}
+.cloud.medium {
+  margin-right: 0%;
+  width: 150px;
+  margin-top: 300px;
+}
+.cloud.large {
+  width: 500px;
+  margin-top: 50px;
+  margin-right: 30%;
+}
+.cloud.larger {
+  width: 600px;
+  margin-top: 50px;
+  margin-right: 10%;
+}
+.cloud.largest {
+  width: 800px;
+  margin-right: 50%;
+}
+.cloud.largest-right {
+  width: 800px;
+  margin-top: 400px;
+  margin-right: 0%;
+}
+/*Cloud: Animation*/
+.cloud {
+  -webkit-animation-name: move-clouds;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-direction: backwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 6s;
+
+  -moz-animation-name: move-clouds;
+  -moz-animation-timing-function: linear;
+  -moz-animation-direction: backwards;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 6s;
+
+  animation-name: move-clouds;
+  animation-timing-function: linear;
+  animation-direction: backwards;
+  animation-iteration-count: infinite;
+  animation-duration: 6s;
+}
+.faster {
+  -webkit-animation-duration: 5s;
+  -moz-animation-duration: 5s;
+  animation-duration: 5s;
+}
+.fast {
+  -webkit-animation-duration: 6s;
+  -moz-animation-duration: 6s;
+  animation-duration: 6s;
+}
+.normal {
+  -webkit-animation-duration: 7s;
+  -moz-animation-duration: 7s;
+  animation-duration: 7s;
+}
+.slow {
+  -webkit-animation-duration: 9s;
+  -moz-animation-duration: 9s;
+  animation-duration: 9s;
+}
+.slowest {
+  -webkit-animation-duration: 12s;
+  -moz-animation-duration: 12s;
+  animation-duration: 12s;
+}
+
+@-webkit-keyframes move-clouds {
+  0% {
+    opacity: 0.1;
+    -webkit-transform: translateY(-1000px);
+    -moz-transform: translateY(-1000px);
+    transform: translateY(-1000px);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(800px);
+    -moz-transform: translateY(800px);
+    transform: translateY(800px);
+  }
+}
+/* smoke */
+#smoke {
+	position: absolute;
+	z-index: 1;
+	width: 1px; height: 1px;
+  left: 50%;
+  bottom: -17px;
+}
+
+/* smoke balls */
+
+#smoke span { 
+  display: block;
+	position: absolute;
+	bottom: -35px; left: 50%; margin-left:-20px;
+	height: 0px; width: 0px;
+	border: 25px solid rgba(100,0,0,.1);
+	border-radius: 50%;
+	left: -6px;
+	transform: scale(0.2);
+}
+
+/* Smoke animation */
+
+@keyframes smokeL {
+	0%   { transform: scale(0.2) translate(0, 0); border: 25px solid rgba(0,0,0,.1); }
+	10%  { opacity: 1; transform: scale(0.2) translate(0, 5px); border: 25px solid rgba(0,0,0,.1); }
+	100% { opacity: 0; transform: scale(1) translate(-15px, 100px); border: 25px solid rgba(150,0,10,.8); }
+}
+
+@keyframes smokeR {
+	0%   { transform: scale(0.2) translate(0, 0); border: 25px solid rgba(0,0,0,.1);  }
+	10%  { opacity: 1; transform: scale(0.2) translate(0, 10px); border: 25px solid rgba(0,0,0,.1);  }
+	100% { opacity: 0; transform: scale(1) translate(15px, 100px); border: 25px solid rgba(0,0,0,.8); }
+}
+
+#smoke .s0 { animation: smokeL .5s 0.2s infinite }
+#smoke .s1 { animation: smokeL .3s 0.4s infinite }
+#smoke .s2 { animation: smokeL .5s 0.6s infinite }
+#smoke .s3 { animation: smokeR .3s 0.8s infinite }
+#smoke .s4 { animation: smokeR .5s 0.4s infinite }
+#smoke .s5 { animation: smokeL .3s 0.2s infinite }
+#smoke .s6 { animation: smokeR .5s 0.4s infinite }
+#smoke .s7 { animation: smokeL .3s 0.6s infinite }
+#smoke .s8 { animation: smokeR .5s 0.8s infinite }
+#smoke .s9 { animation: smokeL .3s 1s infinite }
+
+@media (max-width: 1280px) {
+  .plane {
+  height: 90px;
+  }
+  #smoke{ 
+  bottom: 0px;
+  }
+  .frame {
+    bottom: 15vw;
+  }
+}
